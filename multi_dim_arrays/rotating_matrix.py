@@ -21,7 +21,9 @@ from typing import List, Tuple
 import numpy
 
 
-def brute_force_rotate_matrix(matrix: List[List[int]], r: int) -> List[List[int]]:
+def brute_force_rotate_matrix(
+    matrix: List[List[int]], r: int
+) -> List[List[int]]:
     """
     break the matrix into rings. Rotate each ring seperately
     """
@@ -61,9 +63,13 @@ def brute_force_rotate_matrix(matrix: List[List[int]], r: int) -> List[List[int]
         bottom = matrix[-(1 + ring_number)][
             ring_number : -(ring_number) if ring_number != 0 else None
         ]
-        left = [x[ring_number] for x in matrix[ring_number + 1 : -(1 + ring_number)]]
+        left = [
+            x[ring_number]
+            for x in matrix[ring_number + 1 : -(1 + ring_number)]
+        ]
         right = [
-            x[-(1 + ring_number)] for x in matrix[ring_number + 1 : -(1 + ring_number)]
+            x[-(1 + ring_number)]
+            for x in matrix[ring_number + 1 : -(1 + ring_number)]
         ]
         new_top, new_right, new_bottom, new_left = _rotate_ring(
             top, right, bottom, left, rotations_remaining=r

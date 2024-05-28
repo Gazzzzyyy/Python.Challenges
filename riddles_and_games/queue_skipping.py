@@ -39,12 +39,6 @@ def minimum_bribes(q):
     print(total_bribes)
 
 
-
-
-
-
-
-
 if __name__ == "__main__":
 
-    minimum_bribes([1,2,3,5,4,6,7,8])
+    minimum_bribes([1, 2, 3, 5, 4, 6, 7, 8])
