@@ -28,5 +28,7 @@ def most_frequent_element(array: List[int]) -> int:
 
 if __name__ == "__main__":
 
-    print(most_frequent_element([1, 3, 3, 3, 2, 2, 2, 2, 4, 4, 4]))  # returns 2
+    print(
+        most_frequent_element([1, 3, 3, 3, 2, 2, 2, 2, 4, 4, 4])
+    )  # returns 2
     print(most_frequent_element([5, 5, 5, 1, 1, 1, 2, 2]))  # returns 5 or 1

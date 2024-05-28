@@ -22,56 +22,42 @@ def brute_force_method(array1: List[int], array2: List[int]):
     middle_index = (len(combined_list) - 1) // 2
 
     if even:
-        return (combined_list[middle_index] + combined_list[middle_index + 1]) / 2
+        return (
+            combined_list[middle_index] + combined_list[middle_index + 1]
+        ) / 2
 
     return combined_list[middle_index]
 
 
-def binary_search_method(array1: List[int], array2: List[int]):
-    # Ensure nums1 is the smaller array
-    if len(array1) > len(array2):
-        nums1, nums2 = array2, array1
+def binary_search_method(nums1: List[int], nums2: List[int]):
+    # Ensure nums1 is the smaller array to minimize the binary search range
+    if len(nums1) > len(nums2):
+        nums1, nums2 = nums2, nums1
 
-    m, n = len(nums1), len(nums2)
-    imin, imax, half_len = 0, m, (m + n + 1) // 2
+    x, y = len(nums1), len(nums2)
+    low, high = 0, x
 
-    while imin <= imax:
-        # Partition nums1 at index i
-        i = (imin + imax) // 2
-        # Partition nums2 at index j
-        j = half_len - i
+    while low <= high:
+        partitionX = (low + high) // 2
+        partitionY = (x + y + 1) // 2 - partitionX
 
-        # i is too small, must increase it
-        if i < m and nums1[i] < nums2[j - 1]:
-            imin = i + 1
-        # i is too large, must decrease it
-        elif i > 0 and nums1[i - 1] > nums2[j]:
-            imax = i - 1
+        maxX = float("-inf") if partitionX == 0 else nums1[partitionX - 1]
+        minX = float("inf") if partitionX == x else nums1[partitionX]
+
+        maxY = float("-inf") if partitionY == 0 else nums2[partitionY - 1]
+        minY = float("inf") if partitionY == y else nums2[partitionY]
+
+        if maxX <= minY and maxY <= minX:
+            if (x + y) % 2 == 0:
+                return (max(maxX, maxY) + min(minX, minY)) / 2
+            else:
+                return max(maxX, maxY)
+        elif maxX > minY:
+            high = partitionX - 1
         else:
-            # i is perfect
+            low = partitionX + 1
 
-            # Handle the edge cases where i or j is 0
-            if i == 0:
-                max_of_left = nums2[j - 1]
-            elif j == 0:
-                max_of_left = nums1[i - 1]
-            else:
-                max_of_left = max(nums1[i - 1], nums2[j - 1])
-
-            # If the total length is odd, return the max of left part
-            if (m + n) % 2 == 1:
-                return max_of_left
-
-            # Handle the edge cases where i or j is at the end of their respective arrays
-            if i == m:
-                min_of_right = nums2[j]
-            elif j == n:
-                min_of_right = nums1[i]
-            else:
-                min_of_right = min(nums1[i], nums2[j])
-
-            # If the total length is even, return the average of the max of left part and min of right part
-            return (max_of_left + min_of_right) / 2.0
+    raise ValueError("Input arrays are not sorted")
 
 
 if __name__ == "__main__":

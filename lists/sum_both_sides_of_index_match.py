@@ -27,8 +27,14 @@ def brute_force_find_index(array: List[int]):
 
 if __name__ == "__main__":
 
-    examples = [([1, 7, 3, 6, 5, 6], 3), ([1, 1, 1, 2, 1, 1, 1], 3), ([1, -1, 0, 0], 2)]
+    examples = [
+        ([1, 7, 3, 6, 5, 6], 3),
+        ([1, 1, 1, 2, 1, 1, 1], 3),
+        ([1, -1, 0, 0], 2),
+    ]
 
     for arr, expected in examples:
         result = brute_force_find_index(arr)
-        print(f"Array: {arr} | Expected Index: {expected} | Calculated Index: {result}")
+        print(
+            f"Array: {arr} | Expected Index: {expected} | Calculated Index: {result}"
+        )

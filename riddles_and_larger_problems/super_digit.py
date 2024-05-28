@@ -8,10 +8,7 @@ The super digit of a number is defined as the sum of its digits until the result
 """
 
 
-
-
-def super_digit_brute_force(n: int, k:int = 1):
-
+def super_digit_brute_force(n: int, k: int = 1):
     """
     Brute force
     Not great for large n and k
@@ -27,9 +24,7 @@ def super_digit_brute_force(n: int, k:int = 1):
     return super_digit_brute_force(sum(ints))
 
 
-def super_digit_efficient(n: int, k:int = 1):
-
-
+def super_digit_efficient(n: int, k: int = 1):
     """
     if the sum of n is x, then the sum of n*k = k*x
     """
@@ -41,13 +36,10 @@ def super_digit_efficient(n: int, k:int = 1):
 
     ints = [int(x) for x in number]
 
-    return super_digit_brute_force(sum(ints)*k)
-
-
-
+    return super_digit_brute_force(sum(ints) * k)
 
 
 if __name__ == "__main__":
 
-    print(super_digit_brute_force(n = 9875, k = 4))
+    print(super_digit_brute_force(n=9875, k=4))
     print(super_digit_efficient(n=9875, k=4))
