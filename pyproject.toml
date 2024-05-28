@@ -1,0 +1,22 @@
+[tool.poetry]
+package-mode = false
+version = "0.1.0"
+description = "Home for some common python challenges"
+authors = ["Gary <gary.mccormack1@outlook.com>"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.12"
+numpy = "^1.26.4"
+scipy = "^1.13.1"
+pandas = "^2.2.2"
+black = "^24.4.2"
+scikit-learn = "^1.5.0"
+commitizen = "^3.27.0"
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
